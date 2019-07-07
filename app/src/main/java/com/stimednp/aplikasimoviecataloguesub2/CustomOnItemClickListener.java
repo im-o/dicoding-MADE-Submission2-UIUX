@@ -10,7 +10,7 @@ public class CustomOnItemClickListener implements View.OnClickListener {
     private int position;
     private OnItemClickCallback onItemClickCallback;
 
-    public CustomOnItemClickListener(int position, OnItemClickCallback onItemClickCallback) {
+    CustomOnItemClickListener(int position, OnItemClickCallback onItemClickCallback) {
         this.position = position;
         this.onItemClickCallback = onItemClickCallback;
     }

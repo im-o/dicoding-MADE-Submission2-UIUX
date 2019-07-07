@@ -1,16 +1,15 @@
 package com.stimednp.aplikasimoviecataloguesub2;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.provider.Settings;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import java.util.ArrayList;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,8 +22,8 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
 
-        ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager_main);
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout_main);
+        ViewPager viewPager = findViewById(R.id.view_pager_main);
+        TabLayout tabLayout = findViewById(R.id.tab_layout_main);
 
         TabAdapter tabAdapter = new TabAdapter(getSupportFragmentManager());
         String titleTab1 = getResources().getString(R.string.name_tab1_movies);
@@ -53,7 +52,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int idMenu =item.getItemId();
         if (idMenu == R.id.change_set_lang){
-            return true;
+            Intent changeLangIntent = new Intent(Settings.ACTION_LOCALE_SETTINGS);
+            startActivity(changeLangIntent);
         }
         return super.onOptionsItemSelected(item);
     }

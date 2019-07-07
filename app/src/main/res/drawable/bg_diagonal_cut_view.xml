@@ -4,7 +4,6 @@
     <!--<item>-->
         <!--<bitmap android:src="@drawable/poster_bumblebee" android:gravity="center" android:alpha="0.1"/>-->
     <!--</item>-->
-
     <item android:top="60dp"
         android:bottom="-300dp"
         android:left="0dp"

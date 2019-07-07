@@ -1,25 +1,18 @@
 package com.stimednp.aplikasimoviecataloguesub2;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapShader;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.RectF;
-import android.graphics.Shader;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.animation.AnimationUtils;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
 public class DetailsMovieActivity extends AppCompatActivity {
-    ImageView imgViewFromUrl, imgViewBg;
     public static final String EXTRA_MOVIE = "extra_movie";
+    private Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +23,8 @@ public class DetailsMovieActivity extends AppCompatActivity {
         TextView tvMovieRelease = findViewById(R.id.tv_movie_detail_release);
         TextView tvMovieRating = findViewById(R.id.tv_movie_rating_detail);
         TextView tvMovieGenre = findViewById(R.id.tv_movie_detail_genres);
-        imgViewFromUrl = findViewById(R.id.img_movie_photo_detail);
-        imgViewBg = findViewById(R.id.img_baground_movies);
+        ImageView imgViewFromUrl = findViewById(R.id.img_movie_photo_detail);
+        ImageView imgViewBg = findViewById(R.id.img_baground_movies);
 
         try {
             Movie movie = getIntent().getParcelableExtra(EXTRA_MOVIE);
@@ -42,6 +35,11 @@ public class DetailsMovieActivity extends AppCompatActivity {
                 String movieRating = movie.getMovieRating();
                 String movieGenre = movie.getMovieGenre();
                 String movieUrlPhoto = movie.getMovieUrlPhoto();
+                mToolbar = findViewById(R.id.toolbar_details);
+                setSupportActionBar(mToolbar);
+
+                //call methods
+                setActionBarToolbar();
 
                 //get year exp : (2018)
                 String releaseYear = "";
@@ -50,7 +48,6 @@ public class DetailsMovieActivity extends AppCompatActivity {
                 } else {
                     releaseYear = "****";
                 }
-
 
                 tvMovieTitle.setText(String.format(movieTitle + " (%s)", releaseYear));
                 tvMovieDesc.setText(movieDesc);
@@ -72,5 +69,20 @@ public class DetailsMovieActivity extends AppCompatActivity {
         } catch (Exception e) {
             Log.w("MSG-CODE", "ERROR : " + e);
         }
+    }
+
+    private void setActionBarToolbar() {
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
+        mToolbar.setNavigationIcon(R.drawable.ic_keyboard_backspace_black_24dp);
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 }

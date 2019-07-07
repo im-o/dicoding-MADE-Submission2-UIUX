@@ -31,7 +31,6 @@ public class TabMoviesFragment extends Fragment {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -50,9 +49,10 @@ public class TabMoviesFragment extends Fragment {
         dataRating = view.getResources().getStringArray(R.array.data_movie_rating);
         dataUrlPhoto = view.getResources().getStringArray(R.array.data_movie_url_photo);
 
+        //call method
         allDataMovies();
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.rv_tab_movies);
+        recyclerView = view.findViewById(R.id.rv_tab_movies);
         recyclerView.setHasFixedSize(true);
         showRecyclerList();
     }

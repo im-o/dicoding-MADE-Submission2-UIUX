@@ -17,8 +17,8 @@
                 android:topLeftRadius="@dimen/activity_margin_vertical"
                 android:topRightRadius="@dimen/activity_margin_vertical"/>
             <padding
-                android:top="3dp"
-                android:bottom="3dp"
+                android:top="@dimen/margin_size_low_small"
+                android:bottom="@dimen/margin_size_low_small"
                 android:left="@dimen/margin_size_low"
                 android:right="@dimen/margin_size_low"
                 />

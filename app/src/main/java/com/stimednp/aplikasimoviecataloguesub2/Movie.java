@@ -10,51 +10,51 @@ import android.os.Parcelable;
 public class Movie implements Parcelable {
     private String movieTitle, movieDescription, movieRelease, movieGenre, movieRating, movieUrlPhoto;
 
-    public String getMovieTitle() {
+    String getMovieTitle() {
         return movieTitle;
     }
 
-    public void setMovieTitle(String movieTitle) {
+    void setMovieTitle(String movieTitle) {
         this.movieTitle = movieTitle;
     }
 
-    public String getMovieDescription() {
+    String getMovieDescription() {
         return movieDescription;
     }
 
-    public void setMovieDescription(String movieDescription) {
+    void setMovieDescription(String movieDescription) {
         this.movieDescription = movieDescription;
     }
 
-    public String getMovieRelease() {
+    String getMovieRelease() {
         return movieRelease;
     }
 
-    public void setMovieRelease(String movieRelease) {
+    void setMovieRelease(String movieRelease) {
         this.movieRelease = movieRelease;
     }
 
-    public String getMovieGenre() {
+    String getMovieGenre() {
         return movieGenre;
     }
 
-    public void setMovieGenre(String movieGenre) {
+    void setMovieGenre(String movieGenre) {
         this.movieGenre = movieGenre;
     }
 
-    public String getMovieRating() {
+    String getMovieRating() {
         return movieRating;
     }
 
-    public void setMovieRating(String movieRating) {
+    void setMovieRating(String movieRating) {
         this.movieRating = movieRating;
     }
 
-    public String getMovieUrlPhoto() {
+    String getMovieUrlPhoto() {
         return movieUrlPhoto;
     }
 
-    public void setMovieUrlPhoto(String movieUrlPhoto) {
+    void setMovieUrlPhoto(String movieUrlPhoto) {
         this.movieUrlPhoto = movieUrlPhoto;
     }
 
@@ -73,10 +73,10 @@ public class Movie implements Parcelable {
         dest.writeString(this.movieUrlPhoto);
     }
 
-    public Movie() {
+    Movie() {
     }
 
-    protected Movie(Parcel in) {
+    private Movie(Parcel in) {
         this.movieTitle = in.readString();
         this.movieDescription = in.readString();
         this.movieRelease = in.readString();

@@ -2,11 +2,9 @@ package com.stimednp.aplikasimoviecataloguesub2;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,15 +24,15 @@ public class CardMovieAdapter extends RecyclerView.Adapter<CardMovieAdapter.Card
     private ArrayList<Movie> listMovies;
     private Context context;
 
-    public ArrayList<Movie> getListMovies() {
+    private ArrayList<Movie> getListMovies() {
         return listMovies;
     }
 
-    public void setListMovies(ArrayList<Movie> listMovies) {
+    void setListMovies(ArrayList<Movie> listMovies) {
         this.listMovies = listMovies;
     }
 
-    public CardMovieAdapter(Context context) {
+    CardMovieAdapter(Context context) {
         this.context = context;
     }
 
@@ -52,16 +50,16 @@ public class CardMovieAdapter extends RecyclerView.Adapter<CardMovieAdapter.Card
         cardMovieViewHolder.cardViewRating.setAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_scale_animation));
 
         Movie movie = getListMovies().get(position);
+        cardMovieViewHolder.tvMovieTitle.setText(movie.getMovieTitle());
+        cardMovieViewHolder.tvMovieDesc.setText(movie.getMovieDescription());
+        cardMovieViewHolder.tvMovieRelease.setText(movie.getMovieRelease());
+        cardMovieViewHolder.tvMovieRating.setText(movie.getMovieRating());
         Glide.with(context)
                 .load(movie.getMovieUrlPhoto())
                 .centerCrop()
                 .placeholder(R.color.colorWhite)
                 .error(R.color.colorPrimary)
                 .into(cardMovieViewHolder.imgViewFromUrl);
-        cardMovieViewHolder.tvMovieTitle.setText(movie.getMovieTitle());
-        cardMovieViewHolder.tvMovieDesc.setText(movie.getMovieDescription());
-        cardMovieViewHolder.tvMovieRelease.setText(movie.getMovieRelease());
-        cardMovieViewHolder.tvMovieRating.setText(movie.getMovieRating());
 
         cardMovieViewHolder.cardViewDesc.setOnClickListener(new CustomOnItemClickListener(position, new CustomOnItemClickListener.OnItemClickCallback() {
             @Override
@@ -71,7 +69,6 @@ public class CardMovieAdapter extends RecyclerView.Adapter<CardMovieAdapter.Card
                 context.startActivity(intent);
             }
         }));
-
     }
 
     @Override
@@ -83,7 +80,6 @@ public class CardMovieAdapter extends RecyclerView.Adapter<CardMovieAdapter.Card
         CardView cardViewImg, cardViewDesc, cardViewRating;
         ImageView imgViewFromUrl;
         private TextView tvMovieTitle, tvMovieDesc, tvMovieRelease, tvMovieRating;
-
         CardMovieViewHolder(@NonNull View view) {
             super(view);
             tvMovieTitle = view.findViewById(R.id.tv_movie_title);
@@ -96,18 +92,4 @@ public class CardMovieAdapter extends RecyclerView.Adapter<CardMovieAdapter.Card
             cardViewRating = view.findViewById(R.id.card_view_rating);
         }
     }
-
-//    private void addItem(){
-//        listMovies = new ArrayList<>();
-//        for (int i = 0; i< dataName.length; i++){
-//            Movie movie = new Movie();
-//            movie.setMovieTitle(dataName[0]);
-//            movie.setMovieDescription(dataDesc[1]);
-//            movie.setMovieRelease(dataRelease[2]);
-//            movie.setMovieGenre(dataGenre[3]);
-//            movie.setMovieRating(dataRating[4]);
-//            movie.setMovieUrlPhoto(dataUrlPhoto[5]);
-//            listMovies.add(movie);
-//        }
-//    }
 }
